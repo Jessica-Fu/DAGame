@@ -17,6 +17,7 @@ public class GameBoard extends AppCompatActivity {
     private int userNumber;
     private int ramNumber;
     private int numToServer;
+    private int numFromServer;
     public final int MIN = 0;
     public final int MAX = 10;
     @Override
@@ -46,7 +47,7 @@ public class GameBoard extends AppCompatActivity {
             }
         });
     }
-
+    // this method is used to validate the user input
     public boolean validation(String userInput){
         if(intValidation(userInput)){
             userNumber = Integer.parseInt(userInput);
@@ -56,7 +57,7 @@ public class GameBoard extends AppCompatActivity {
         }
         return false;
     }
-
+    // this method is used to check whether the user input is an int
     public boolean intValidation(String userInput) {
         try {
             Integer.parseInt(userInput);
@@ -65,7 +66,7 @@ public class GameBoard extends AppCompatActivity {
             return false;
         }
     }
-
+    // this method is used to check whether the user input int is with in the given range
     public boolean rangeValidation(int userNumber){
         if(userNumber>=MIN && userNumber<=MAX){
             return true;
@@ -73,7 +74,7 @@ public class GameBoard extends AppCompatActivity {
             return false;
         }
     }
-
+    // this method is used to compare the user input with system ramdon number
     public boolean compareNum(){
         ramNumber = ThreadLocalRandom.current().nextInt(MIN, MAX + 1);
         if(userNumber==ramNumber){
@@ -81,8 +82,10 @@ public class GameBoard extends AppCompatActivity {
         }
         return false;
     }
+
+    // this method is used to update the current score
     public void updateScore(){
-        score=score + numToServer;
+        score=score + numToServer; //should be numFromServer,after combined with our client server code;
         String st=String.valueOf(score);
         final TextView textview=(TextView) findViewById(R.id.scoreText);
         textview.setText(st);
