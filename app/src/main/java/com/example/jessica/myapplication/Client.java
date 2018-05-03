@@ -1,4 +1,7 @@
+package com.example.jessica.myapplication;
 
+import android.util.Log;
+import android.widget.TextView;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -6,11 +9,28 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import java.util.concurrent.ThreadLocalRandom;
+
+import static com.example.jessica.myapplication.R.id.serverConnection;
+
 public class Client {
 
-    public static  void main(String args[]){
-        String ip = "127.0.0.1";
-        int port = 1342;
+    public void main(){
+        //TextView server;
+        //server= (TextView) findViewById(serverConnection);
+       // server.setText("Client is running");
+        String ip = "10.0.2.2";
+        int port = 8080;
+
+        System.out.print("Client start.");
+
+        //Log.wtf("myDebug", "Client start.");
 
         try(Socket socket = new Socket(ip, port)){
             // Input and ouput stream
@@ -20,8 +40,9 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
 
             // User input
-            System.out.println("Enter the input");
-            String message_send = scanner.nextLine();
+//            System.out.println("Enter the input");
+//            String message_send = scanner.nextLine();
+            String message_send = "This is client";
 
             //Send message to Server
             output.writeUTF(message_send);

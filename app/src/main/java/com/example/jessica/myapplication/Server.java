@@ -17,7 +17,8 @@ import java.util.Scanner;
 */
 public class Server {
     public static  void main(String args[]) throws IOException{
-        int port = 9876;
+        int port = 8080;
+        System.out.print("Server start.");
         ServerSocketFactory factory = ServerSocketFactory.getDefault();
         try(ServerSocket server = factory.createServerSocket(port)){
             // Wait for client connection

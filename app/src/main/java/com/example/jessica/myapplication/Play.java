@@ -21,6 +21,7 @@ public class Play extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         playButton = (Button) findViewById(R.id.playButton);
+        print();
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,43 +29,58 @@ public class Play extends AppCompatActivity {
             }
         });
     }
+    public void print(){
+        System.out.println("start~~~");
+        //Log.wtf("myDebugTab", "class startGam enter.");
 
+
+    }
     public void startGame(){
-        Log.d("STATE","aaaa");
+
+        Client new_client = new Client();
+        new_client.main();
+
         Intent intent = new Intent(this,GameBoard.class);
         startActivity(intent);
 
-        String ip = "127.0.0.1";
-        int port = 9876;
-
-        try(Socket socket = new Socket(ip, port)){
-            // Input and ouput stream
-            DataInputStream input = new DataInputStream(socket.getInputStream());
-            DataOutputStream output = new DataOutputStream(socket.getOutputStream());
-            // Get input from user
-//            Scanner scanner = new Scanner(System.in);
-
-//            // User input
-//            System.out.println("Enter the input");
-//            String message_send = scanner.nextLine();
-            String message_send = "This is client.";
-
-            //Send message to Server
-            output.writeUTF(message_send);
-//            System.out.printf("Send %s to Server.\n",message_send);
-            output.flush();
-
-            // Listen to Server
-            while (true){
-                if(input.available() > 0){
-                    String message_rec = input.readUTF();
-//                    System.out.printf("Client Receive: %s. \n", message_rec);
-                }
-            }
-        }catch (IOException e){
-            System.out.println(e);
-        }
     }
+
+//    public void client(){
+//        Log.d("STATE","aaaa");
+//
+//        System.out.print("client start.");
+//
+//        String ip = "127.0.0.1";
+//        int port = 9876;
+//
+//        try(Socket socket = new Socket(ip, port)){
+//            // Input and ouput stream
+//            DataInputStream input = new DataInputStream(socket.getInputStream());
+//            DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+//            // Get input from user
+////            Scanner scanner = new Scanner(System.in);
+//
+////            // User input
+////            System.out.println("Enter the input");
+////            String message_send = scanner.nextLine();
+//            String message_send = "This is client.";
+//
+//            //Send message to Server
+//            output.writeUTF(message_send);
+////            System.out.printf("Send %s to Server.\n",message_send);
+//            output.flush();
+//
+//            // Listen to Server
+//            while (true){
+//                if(input.available() > 0){
+//                    String message_rec = input.readUTF();
+////                    System.out.printf("Client Receive: %s. \n", message_rec);
+//                }
+//            }
+//        }catch (IOException e){
+//            System.out.println(e);
+//        }
+//    }
 
 
 }
