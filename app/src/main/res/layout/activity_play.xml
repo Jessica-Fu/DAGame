@@ -51,4 +51,12 @@
         android:layout_marginBottom="55dp"
         android:text="Connect to server.." />
 
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="un-initiated"
+        android:textSize="20dp"/>
+
 </RelativeLayout>
