@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.example.jessica.myapplication.R.id.serverConnection;
 
 public class Client {
 

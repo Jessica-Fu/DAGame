@@ -33,15 +33,8 @@ public class Play extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clientThread = new ClientThread(
-                        "172.20.10.8",
-                        7777,
-                        clientHandler);
-                clientThread.start();
-                clientThread.txMsg("msgToSend");
-                System.out.println("start~~~");
 
-                //startGame();
+                startGame();
             }
         });
     }
@@ -55,7 +48,16 @@ public class Play extends AppCompatActivity {
 
 //        Client new_client = new Client();
 //        new_client.main();
-        client();
+        //client();
+
+        clientThread = new ClientThread(
+                "172.20.10.8",
+                7777,
+                clientHandler);
+        clientThread.start();
+        clientThread.txMsg("msgToSend");
+        System.out.println("start~~~");
+
 
         Intent intent = new Intent(this,GameBoard.class);
         startActivity(intent);
@@ -114,8 +116,8 @@ public class Play extends AppCompatActivity {
 
         System.out.print("client start.");
 
-        String ip = "49.184.155.79";
-        int port = 9234;
+        String ip = "172.20.10.8";
+        int port = 7777;
 
         try(Socket socket = new Socket(ip, port)){
             // Input and ouput stream
